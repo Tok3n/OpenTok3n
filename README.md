@@ -1,4 +1,4 @@
 OpenTok3n
 =========
 
-We are a Open Source platform for multi step authentication
+We are an Open Source platform for multi-factor authentication.
