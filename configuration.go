@@ -19,6 +19,9 @@ type ConfigStruct struct {
 	DBPassword string
 	DBName string
 	DBTablePrefix string
+
+	Tok3nAPISecret string
+	Tok3nAPIKey string
 }
 
 var configData ConfigStruct
