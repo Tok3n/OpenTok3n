@@ -2,25 +2,12 @@ package main
 
 import (
 	//"fmt"
-	"flag"
 	"log"
 	//"net/http"
 	)
 
-
-var portFlag = flag.String("port", "", "server port")
-var addrFlag = flag.String("addr", "", "http service address") 
-var dbAddrFlag = flag.String("dbaddr", "", "database server address")
-var dbPortFlag = flag.String("dbport", "", "database server port")
-var dbUserFlag = flag.String("dbuser", "", "database server user")
-var dbPassFlag = flag.String("dbpass", "", "database server pass")
-var dbDBNameFlag = flag.String("dbname", "", "database name")
-var dbTablePrefixFlag = flag.String("dbprefix", "", "database table prefix")
-
-
-
 func main() {
-	flag.Parse()
+	
 
 	err := configure();
 	if err != nil{

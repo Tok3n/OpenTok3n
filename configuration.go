@@ -48,7 +48,21 @@ func configure() error { //Init configuration
 	return nil
 }
 
+
+var portFlag = flag.String("port", "", "server port")
+var addrFlag = flag.String("addr", "", "http service address") 
+var dbAddrFlag = flag.String("dbaddr", "", "database server address")
+var dbPortFlag = flag.String("dbport", "", "database server port")
+var dbUserFlag = flag.String("dbuser", "", "database server user")
+var dbPassFlag = flag.String("dbpass", "", "database server pass")
+var dbDBNameFlag = flag.String("dbname", "", "database name")
+var dbTablePrefixFlag = flag.String("dbprefix", "", "database table prefix")
+
+var tok3nSecretFlag = flag.String("tok3nSecret", "", "Tok3n secret API key")
+var tok3nApiKeyFlag = flag.String("tok3nKey", "", "Tok3n API key")
+
 func _startInteractiveConfiguration(){
+	flag.Parse()
 	log.Printf("%v",configData)
 }
 
