@@ -8,7 +8,6 @@ import (
 //Ask if a file exists
 //TODO: verify that is not a directory
 func fileExists(path string)bool{ 
-	log.Printf("Verifing that file %s exists?\n",path)
 	_, err := os.Stat(path);
 	return !os.IsNotExist(err)
 }
@@ -25,5 +24,10 @@ func _getContentOfFile(filestring string) []byte {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer func() {
+        if err := file.Close(); err != nil {
+            panic(err)
+        }
+    }()
 	return data
 }
