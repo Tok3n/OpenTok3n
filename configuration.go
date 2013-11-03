@@ -4,9 +4,11 @@ import (
 	
 	"flag"
 	"log"
-	//"fmt"
+	"fmt"
 	"encoding/json"
 	"errors"
+	"io/ioutil"
+
 )
 
 type ConfigStruct struct {
@@ -66,7 +68,130 @@ var tok3nApiKeyFlag = flag.String("tok3nKey", "", "Tok3n API key")
 
 func _startInteractiveConfiguration(){
 	flag.Parse()
+	asked := false
+
+	if configData.Address == ""{ //Not configured the Address
+		if *addrFlag == ""{ //Empty flag or not existent
+			fmt.Printf("Addres of the current Server: ")
+			fmt.Scanf("%s", &configData.Address)
+			asked = true
+		}else{
+			configData.Address = *addrFlag
+		}
+	}
+
+	if configData.Port == ""{
+		if *portFlag == ""{
+			fmt.Printf("Port of the current Server: ")
+			fmt.Scanf("%s", &configData.Port)
+			asked = true
+		}else{
+			configData.Port = *portFlag
+		}
+	}
+
+	if configData.DBAddress == ""{
+		if *dbAddrFlag == ""{
+			fmt.Printf("Address of the MySQL server: ")
+			fmt.Scanf("%s", &configData.DBAddress)
+			asked = true
+		}else{
+			configData.DBAddress = *dbAddrFlag
+		}
+	}
+
+	if configData.DBPort == ""{
+		if *dbPortFlag == ""{
+			fmt.Printf("Address of the MySQL server (3306): ")
+			fmt.Scanf("%s", &configData.DBPort)
+			if configData.DBPort == ""{
+				configData.DBPort = "3306"
+			}
+			asked = true
+		}else{
+			configData.DBPort = *dbPortFlag
+		}
+	}
+
+	if configData.DBUser == ""{
+		if *dbUserFlag == ""{
+			fmt.Printf("Database username: ")
+			fmt.Scanf("%s", &configData.DBUser)
+			asked = true
+		}else{
+			configData.DBUser = *dbUserFlag
+		}
+	}
+
+	if configData.DBPassword == ""{
+		if *dbPassFlag == ""{
+			fmt.Printf("Database password: ")
+			fmt.Scanf("%s", &configData.DBPassword)
+			asked = true
+		}else{
+			configData.DBPassword = *dbPassFlag
+		}
+	}
+
+	if configData.DBName == ""{
+		if *dbDBNameFlag == ""{
+			fmt.Printf("Database name: ")
+			fmt.Scanf("%s", &configData.DBName)
+			asked = true
+		}else{
+			configData.DBName = *dbDBNameFlag
+		}
+	}
+
+	if configData.DBTablePrefix == ""{
+		if *dbTablePrefixFlag == ""{
+			fmt.Printf("Database table prefix: ")
+			fmt.Scanf("%s", &configData.DBTablePrefix)
+			asked = true
+		}else{
+			configData.DBTablePrefix = *dbTablePrefixFlag
+		}
+	}
+
+	fmt.Printf("\n\n ---------------------- \n\nGet your FREE API Keys from http://my.tok3n.com/ \n")
+
+	if configData.Tok3nAPISecret == ""{
+		if *tok3nSecretFlag == ""{
+			fmt.Printf("Tok3n API Secret: ")
+			fmt.Scanf("%s", &configData.Tok3nAPISecret)
+			asked = true
+		}else{
+			configData.Tok3nAPISecret = *tok3nSecretFlag
+		}
+	}
+
+	if configData.Tok3nAPIKey == ""{
+		if *tok3nApiKeyFlag == ""{
+			fmt.Printf("Tok3n API Key: ")
+			fmt.Scanf("%s", &configData.Tok3nAPIKey)
+			asked = true
+		}else{
+			configData.Tok3nAPIKey = *tok3nApiKeyFlag
+		}
+	}
+
+	configData.Inited = true
+	if asked{
+		var rewrite string
+		fmt.Printf("You want to rewrite the configuration file with the previous data (Y/n): ")
+		fmt.Scanf("%s", &rewrite)
+		if rewrite == "Y"{
+			jsonString,_ := json.Marshal(configData)
+			fmt.Printf("Ask for save the configuration: %s",jsonString)
+			err := ioutil.WriteFile(configPath, jsonString, 0644)
+			if err != nil { panic(err) }
+		}
+	}
 	log.Printf("%v",configData)
+}
+
+func verifyConfiguration(){
+	
 }
 
 func _configWithFile(filepath string) error{
