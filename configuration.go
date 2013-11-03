@@ -9,6 +9,9 @@ import (
 	"errors"
 	"io/ioutil"
 
+	"database/sql"
+	_ "github.com/go-sql-driver/mysql"
+
 )
 
 type ConfigStruct struct {
@@ -42,7 +45,7 @@ func configure() error { //Init configuration
 		}else if err.Error() == "Non existent file." && !configData.Inited{
 			configPath = "./opentok3n.config"
 			err = _configWithFile(configPath)
-			if err.Error() == "Not valid config File." {
+			if err!= nil && err.Error() == "Not valid config File." {
 				return err;
 			}
 			_startInteractiveConfiguration()
@@ -153,7 +156,7 @@ func _startInteractiveConfiguration(){
 		}
 	}
 
-	fmt.Printf("\n\n ---------------------- \n\nGet your FREE API Keys from http://my.tok3n.com/ \n")
+	fmt.Printf("\n\n ---------------------- \n\nGet your FREE API Keys from http://www.tok3n.com/ \n")
 
 	if configData.Tok3nAPISecret == ""{
 		if *tok3nSecretFlag == ""{
@@ -176,6 +179,14 @@ func _startInteractiveConfiguration(){
 	}
 
 	configData.Inited = true
+
+	err := verifyMySQLConfiguration()
+	if err != nil{
+		log.Fatal(err)
+	}
+
+	fmt.Printf("\nThe database is correctly loaded.\n")
+
 	if asked{
 		var rewrite string
 		fmt.Printf("You want to rewrite the configuration file with the previous data (Y/n): ")
@@ -183,15 +194,26 @@ func _startInteractiveConfiguration(){
 		if rewrite == "Y"{
 			jsonString,_ := json.Marshal(configData)
 			fmt.Printf("Ask for save the configuration: %s",jsonString)
-			err := ioutil.WriteFile(configPath, jsonString, 0644)
+			err = ioutil.WriteFile(configPath, jsonString, 0644)
 			if err != nil { panic(err) }
 		}
 	}
 	log.Printf("%v",configData)
 }
 
-func verifyConfiguration(){
-	
+func verifyMySQLConfiguration() error {
+	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",configData.DBUser, configData.DBPassword,configData.DBAddress,configData.DBPort,configData.DBName))
+	if err != nil {
+	    return err // Just for example purpose. You should use proper error handling instead of panic
+	}
+	defer db.Close()
+
+	// Open doesn't open a connection. Validate DSN data:
+	err = db.Ping()
+	if err != nil {
+	    return err // proper error handling instead of panic in your app
+	}
+	return nil
 }
 
 func _configWithFile(filepath string) error{
