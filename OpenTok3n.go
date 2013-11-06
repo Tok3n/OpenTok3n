@@ -1,9 +1,9 @@
 package main
 
 import (
-	//"fmt"
+	"fmt"
 	"log"
-	//"net/http"
+	"net/http"
 	)
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 
 	registerHandlers()
 	
-	err := http.ListenAndServe(localUrl, nil)
+	err = http.ListenAndServe(localUrl, nil)
     if err != nil {
         log.Fatal("ListenAndServe:", err)
     }
