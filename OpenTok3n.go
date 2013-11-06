@@ -31,5 +31,5 @@ func registerHandlers(){
 }
 
 func initRoot(w http.ResponseWriter, req *http.Request) {
-    fmt.Fprintf(w,"Hello Open Tok3n, Just for the lols at port: %s",*port)
+    fmt.Fprintf(w,"Hello Open Tok3n, Just for the lols at port: %s",configData.Port)
 }
