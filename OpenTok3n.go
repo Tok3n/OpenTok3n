@@ -14,7 +14,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	/*var localUrl = fmt.Sprintf("%s:%s",*addr,*port)
+	var localUrl = fmt.Sprintf("%s:%s",configData.Address,configData.Port)
 	log.Print(localUrl)
 
 	registerHandlers()
@@ -22,9 +22,9 @@ func main() {
 	err := http.ListenAndServe(localUrl, nil)
     if err != nil {
         log.Fatal("ListenAndServe:", err)
-    }*/
+    }
 }
-/*
+
 func registerHandlers(){
 	http.Handle("/", http.HandlerFunc(initRoot))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./src/github.com/Tok3n/OpenTok3n/webResources/static/"))))
@@ -32,4 +32,4 @@ func registerHandlers(){
 
 func initRoot(w http.ResponseWriter, req *http.Request) {
     fmt.Fprintf(w,"Hello Open Tok3n, Just for the lols at port: %s",*port)
-}*/
+}
