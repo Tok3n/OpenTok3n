@@ -14,7 +14,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var localUrl = fmt.Sprintf("0.0.0.0:%s",configData.Address,configData.Port)
+	var localUrl = fmt.Sprintf("0.0.0.0:%s",configData.Port)
 	log.Print(localUrl)
 
 	registerHandlers()
