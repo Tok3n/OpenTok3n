@@ -29,7 +29,7 @@ func getNewUserSession_API(w http.ResponseWriter, req *http.Request){
 	}
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
-	cod,err := qr.Encode(fmt.Sprintf("http://%s/api/v1/openTok3n/validateNewUserSession?noask=a&session=%s&key=%s",TOK3N_DOMAIN,body,configData.Tok3nAPIKey),qr.H)
+	cod,err := qr.Encode(fmt.Sprintf("http://%s/api/v1/openTok3n/validateNewUserSession?session=%s&key=%s",TOK3N_DOMAIN,body,configData.Tok3nAPIKey),qr.H)
 	if err != nil{
 		fmt.Fprintf(w,"Something whent very wrong, verify OpenTok3n integration instalation")
 		return
