@@ -28,6 +28,8 @@ func main() {
 func registerHandlers(){
 	http.Handle("/", http.HandlerFunc(initRoot))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./src/github.com/Tok3n/OpenTok3n/webResources/static/"))))
+
+	registerApiHandlers()
 }
 
 func initRoot(w http.ResponseWriter, req *http.Request) {
