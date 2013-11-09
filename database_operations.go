@@ -27,6 +27,7 @@ func initDB(){
 	    default:
 	        DBVerifyDatabaseVersion(db)
     }
+    db.Close()
 }
 
 func DBInstall(db  *sql.DB){
