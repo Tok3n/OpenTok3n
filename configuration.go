@@ -9,9 +9,6 @@ import (
 	"errors"
 	"io/ioutil"
 
-	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
-
 )
 
 type ConfigStruct struct {
@@ -202,7 +199,7 @@ func _startInteractiveConfiguration(){
 }
 
 func verifyMySQLConfiguration() error {
-	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",configData.DBUser, configData.DBPassword,configData.DBAddress,configData.DBPort,configData.DBName))
+	db, err := _getDB()
 	if err != nil {
 	    return err // Just for example purpose. You should use proper error handling instead of panic
 	}
@@ -213,6 +210,7 @@ func verifyMySQLConfiguration() error {
 	if err != nil {
 	    return err // proper error handling instead of panic in your app
 	}
+	db.Close()
 	return nil
 }
 

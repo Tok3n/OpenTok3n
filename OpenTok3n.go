@@ -10,6 +10,7 @@ func main() {
 	
 
 	err := configure();
+	initDB()
 	if err != nil{
 		log.Fatal(err)
 	}

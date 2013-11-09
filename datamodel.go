@@ -1,7 +1,10 @@
 package main
 import (
-	//"fmt"
-	"database/sql/driver"
+	_ "github.com/go-sql-driver/mysql"
 )
 
-var db driver.Conn
+//
+
+
+
+
