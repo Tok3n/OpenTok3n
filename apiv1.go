@@ -21,7 +21,7 @@ func getNewUserSession_API(w http.ResponseWriter, req *http.Request){
 	if err != nil{
 		cod,err := qr.Encode(fmt.Sprintf("http://%s/api/v1/openTok3n/getIntegrationError",TOK3N_DOMAIN),qr.M)
 		if err != nil{
-			fmt.Fprintf(w,"Something whent very wrong, verify OpenTok3n integration instalation")
+			fmt.Fprintf(w,"Something went very wrong, verify OpenTok3n integration instalation")
 			return
 		}
 		img := cod.PNG()
