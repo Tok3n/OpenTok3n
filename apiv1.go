@@ -11,6 +11,7 @@ import (
 
 func registerApiHandlers(){
 	http.Handle("/api/v1/getNewUserQR", http.HandlerFunc(getNewUserSession_API))
+	http.Handle("/api/v1/addingUserResponse", http.HandlerFunc(addingUserResponse_API))
 }
 
 var TOK3N_DOMAIN = "my.tok3n.com"
@@ -37,4 +38,9 @@ func getNewUserSession_API(w http.ResponseWriter, req *http.Request){
 	img := cod.PNG()
 	w.Header().Add("Content-Type","image/png")
 	w.Write(img)
+}
+
+func addingUserResponse_API(w http.ResponseWriter, req *http.Request){
+	req.FormValue("userkey")
+	req.FormValue("session")
 }
