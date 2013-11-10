@@ -27,7 +27,7 @@ func addTok3nAuthenticationSeccion(session string,data string)error{
 	if err != nil{
 		return err
 	}
-	err = _DBExcecute(db,fmt.Sprintf("INSERT INTO ApiSesion VALUES (0,0,'%s',now(),NULL,3, 0, '%s')",session,data))
+	err = _DBExcecute(db,fmt.Sprintf("INSERT INTO ApiSesion VALUES (0,0,'%s',now(),DATE_ADD(NOW(), INTERVAL 100 YEAR),3, 0, '%s')",session,data))
 	db.Close()
 	return err
 }
@@ -81,7 +81,7 @@ func createImplementationUser(key,data string) error{
 	if err != nil{
 		return err
 	}
-	err = _DBExcecute(db,fmt.Sprintf("INSERT INTO ImplementationUser VALUES (0,now(),NULL, '%s', 2, '%d')",key,data))
+	err = _DBExcecute(db,fmt.Sprintf("INSERT INTO ImplementationUser VALUES (0,now(),DATE_ADD(NOW(), INTERVAL 100 YEAR), '%s', 2, '%d')",key,data))
 	db.Close()
 	return err
 }
