@@ -68,5 +68,6 @@ func addingUserResponse_API(w http.ResponseWriter, req *http.Request){
 			log.Fatal(err)
 		}
 		fmt.Printf("user responded to session: %v",sess)
+		createImplementationUser(key,sess.Data)
 	}
 }
