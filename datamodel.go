@@ -81,7 +81,7 @@ func createImplementationUser(key,data string) error{
 	if err != nil{
 		return err
 	}
-	err = _DBExcecute(db,fmt.Sprintf("INSERT INTO ImplementationUser VALUES (0,now(),DATE_ADD(NOW(), INTERVAL 100 YEAR), '%s', 2, '%d')",key,data))
+	err = _DBExcecute(db,fmt.Sprintf("INSERT INTO ImplementationUser VALUES (0,now(),DATE_ADD(NOW(), INTERVAL 100 YEAR), '%s', 2, '%s')",key,data))
 	db.Close()
 	return err
 }
