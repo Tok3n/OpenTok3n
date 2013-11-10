@@ -69,7 +69,7 @@ func DB_V_0_1() []string {
 		  Deletion timestamp NULL DEFAULT NULL,
 		  UserKey varchar(255) DEFAULT NULL,
 		  Status int(11) DEFAULT NULL,
-		  ImplementationId varchar(255) DEFAULT NULL
+		  Data varchar(255) DEFAULT NULL
 		);`,`
 		CREATE TABLE ApiSesion (
 		  IdVal int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -79,7 +79,7 @@ func DB_V_0_1() []string {
 		  Used timestamp NULL DEFAULT NULL,
 		  Kind int(11) DEFAULT NULL,
 		  Status int(11) DEFAULT NULL,
-		  Data text
+		  Data varchar(255)
 		);`,`
 		CREATE TABLE Metadata (
 		  IdVal int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,

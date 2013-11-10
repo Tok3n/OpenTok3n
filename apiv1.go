@@ -2,7 +2,7 @@ package main
 import (
 	"net/http"
 	"io/ioutil"
-	//"log"
+	"log"
 	"net/url"
 	"fmt"
 
@@ -28,6 +28,7 @@ func getNewUserSession_API(w http.ResponseWriter, req *http.Request){
 		w.Write(img)
 		return
 	}
+
 	resp, err := http.PostForm(fmt.Sprintf("http://%s/api/v1/openTok3n/getNewUserSession",TOK3N_DOMAIN) , url.Values{"kind": {"OTaccess"}, "secretKey": {configData.Tok3nAPISecret}})
 	if err != nil{
 		cod,err := qr.Encode(fmt.Sprintf("http://%s/api/v1/openTok3n/getIntegrationError",TOK3N_DOMAIN),qr.M)
@@ -55,6 +56,17 @@ func getNewUserSession_API(w http.ResponseWriter, req *http.Request){
 }
 
 func addingUserResponse_API(w http.ResponseWriter, req *http.Request){
-	req.FormValue("userkey")
-	req.FormValue("session")
+	key := req.FormValue("userkey")
+	session := req.FormValue("session")
+
+	setValidSession(session)
+
+	if !userKeyExists(key){
+		//Not exists add it 
+		sess, err := getApiSessionWithSesionId(session)
+		if err != nil{
+			log.Fatal(err)
+		}
+		fmt.Printf("user responded to session: %v",sess)
+	}
 }
