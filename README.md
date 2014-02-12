@@ -9,7 +9,7 @@ Requirements
 * A MySQL database
 
 Installing
-
+-
 * Once you downloaded the [GoLang][1].
 * Run the following command.
 
