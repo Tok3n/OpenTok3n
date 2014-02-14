@@ -21,4 +21,9 @@ Wordpress plugin
 Develop and Integrate a pluging for the Wordpress platform. Making it easy to integrate OpenTok3n as a Second Factor authentication for Wordpress. Written in __PHP__, __MySQL__ and __HTML5__
 .
 
+Tok3n/OpenTok3n open libraries
+=
+
+For easy integration of the API's in diferent languages or use cases as: __node.js__, __python__, __ruby__, __Java__, __DartLang__ (for Server), __ssh__, __VPN__ connections, etc.
+
 [1]: https://www.grc.com/sqrl/sqrl.htm
