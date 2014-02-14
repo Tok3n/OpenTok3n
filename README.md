@@ -12,6 +12,7 @@ Requirements
 Installing
 -
 * Once you downloaded the [GoLang][1].
+** Now ensure that you have configure a $GOPATH
 * Run the following command.
 
 go install https://github.com/Tok3n/OpenTok3n
