@@ -7,17 +7,23 @@ Requirements
 -
 * [Go programming language][1]
 * [Git Client app][2]
+* [Mercurial client app][3]
 * A MySQL database
 
 Installing
 -
-* Once you downloaded the [GoLang][1].
-** Now ensure that you have configure a $GOPATH
-* Run the following command.
+* Once you downloaded the [GoLang][1]. (Ensure that you have configured a $GOPATH)
+* Add $GOPATH/bin to the $PATH
+* Run the following commands.
 
-go install https://github.com/Tok3n/OpenTok3n
+go get github.com/Tok3n/OpenTok3n
+* then
+go install github.com/Tok3n/OpenTok3n
 
 * That's it the OpenTok3n App is now installed in your machine.
 
+Now you can run the command OpenTok3n --help to view the parameters that OpenTok3n acept 
+
 [1]: http://golang.org/doc/install
 [2]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+[3]: http://mercurial.selenic.com/wiki/Download
