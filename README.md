@@ -23,7 +23,7 @@ go install github.com/Tok3n/OpenTok3n
 
 * That's it the OpenTok3n App is now installed in your machine.
 
-Now you can run the command OpenTok3n --help to view the parameters that OpenTok3n acept 
+Now you can run the command _OpenTok3n --help_ to view the parameters that OpenTok3n acept 
 
 [1]: http://golang.org/doc/install
 [2]: http://git-scm.com/book/en/Getting-Started-Installing-Git
