@@ -1,5 +1,7 @@
 List of ideas for the Gooble Summer Of Code
 
+The students that work with us. Are needed to have a strong http understanding and good coding skils. And the students that worked with us will have the experience of share their knoledge with real people. And also we are going to make sure that your get a stronger knoledge about security and the algorithms/techniques used in the core of most used security libraries and how to decide wich to use.
+
 OpenTok3n - Platform
 =
 
