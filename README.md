@@ -17,9 +17,6 @@ Installing
 * Run the following commands.
 
 go get github.com/Tok3n/OpenTok3n
-* then
-
-go install github.com/Tok3n/OpenTok3n
 
 * That's it the OpenTok3n App is now installed in your machine.
 
