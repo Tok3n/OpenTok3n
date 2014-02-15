@@ -82,9 +82,12 @@ func _startInteractiveConfiguration(){
 
 	if configData.Port == ""{
 		if *portFlag == ""{
-			fmt.Printf("Port of the current Server: ")
+			fmt.Printf("Port of the current Server (63568): ")
 			fmt.Scanf("%s", &configData.Port)
 			asked = true
+			if configData.Port == ""{
+				configData.Port = "63568"
+			}
 		}else{
 			configData.Port = *portFlag
 		}
