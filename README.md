@@ -23,11 +23,15 @@ go get github.com/Tok3n/OpenTok3n
 Configuration
 -
 
-To configure OpenTok3n you can do it in three ways.
+Fist you need to have an integration with [Tok3n][4]. For you to have the API Keys that are going to syncronize the end user smartphones with your integration. (The tok3n platform provides the high entropy random number generators for the integration user keys)
+
+To configure OpenTok3n you can do it in three ways:
 
 * Provide a configuration file to the server at run.
 * Provide the parameters via the " - " sintax to the server at run.
 * Runing the server and perform an interactive configuration. 
+
+
 
 You can always run _OpenTok3n --help_ to remember this detils
 Now you can run the command  to view the parameters that OpenTok3n acept 
@@ -35,3 +39,4 @@ Now you can run the command  to view the parameters that OpenTok3n acept
 [1]: http://golang.org/doc/install
 [2]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [3]: http://mercurial.selenic.com/wiki/Download
+[4]: http://secure.tok3n.com
