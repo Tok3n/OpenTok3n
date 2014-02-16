@@ -31,7 +31,22 @@ To configure OpenTok3n you can do it in three ways:
 * Provide the parameters via the " - " sintax to the server at run.
 * Runing the server and perform an interactive configuration. 
 
-
+The configuration file is a json string encoded that should looks like the following:
+```json
+{
+	"Inited":true,
+	"Address":"127.0.0.1",
+	"Port":"63568",
+	"DBAddress":"localhost",
+	"DBPort":"3306",
+	"DBUser":"root",
+	"DBPassword":"root",
+	"DBName":"open",
+	"DBTablePrefix":"open_",
+	"Tok3nAPISecret":"THIS-IS-YOUR-SECRET-KEY",
+	"Tok3nAPIKey":"THIS-IS-YOUR-PUBIC-KEY"
+}
+```
 
 You can always run _OpenTok3n --help_ to remember this detils
 Now you can run the command  to view the parameters that OpenTok3n acept 
