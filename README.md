@@ -31,7 +31,7 @@ To configure OpenTok3n you can do it in three ways:
 * Provide the parameters via the " - " sintax to the server at run.
 * Runing the server and perform an interactive configuration. 
 
-The configuration file by default is called _opentok3n.config_ and is a __json__ string encoded that should looks like the following:
+The configuration file by default is called '_opentok3n.config_' and is a __json__ string encoded that should looks like the following:
 ```json
 {
 	"Inited":true,
