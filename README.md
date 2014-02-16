@@ -43,8 +43,8 @@ The configuration file by default is called '_opentok3n.config_' and is a __json
 	"DBPassword":"root",
 	"DBName":"open",
 	"DBTablePrefix":"open_",
-	"Tok3nAPISecret":"THIS-IS-YOUR-SECRET-KEY",
-	"Tok3nAPIKey":"THIS-IS-YOUR-PUBIC-KEY"
+	"Tok3nAPISecret":"THIS-IS-YOUR-TOK3N-SECRET-KEY",
+	"Tok3nAPIKey":"THIS-IS-YOUR-TOK3N-PUBIC-KEY"
 }
 ```
 
