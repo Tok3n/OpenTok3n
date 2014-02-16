@@ -48,6 +48,10 @@ The configuration file by default is called '_opentok3n.config_' and is a __json
 }
 ```
 
+Where __Address__ and __Port__ are the local address:port (tipically "localhost:63568"), where the local server is running. You can change the port and it will run in that particular port.
+
+__DBAddress__, __DBPort__ are the url and port of the MySQL server, also the DBUser, DBPassword are de credential of that database server. DBName and DBTablePrefix are the database name and the prefix of the tables that will be created in that database.
+
 You can always run _OpenTok3n --help_ to remember this detils
 Now you can run the command  to view the parameters that OpenTok3n acept 
 
