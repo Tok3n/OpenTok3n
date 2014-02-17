@@ -12,7 +12,7 @@ Requirements
 Install
 -
 1. Verify your Golang installation running `go`.
-2. Create/Select a directory for the OpenTok3n installation and set up the $GOPATH in your bash profile running `echo "export GOPATH=$HOME/SelectedDirectory" >> $HOME/.bashrc` For more information about choosing a GOPATH run `go help gopath`. Also see [this post][6] about choosing a bash profile file.
+2. Create/Select a directory for the OpenTok3n installation and set up the $GOPATH in your bash profile running `echo "export GOPATH=$HOME/SelectedDirectory" >> $HOME/.bashrc`. For more information about choosing a GOPATH run `go help gopath`. Also see [this post][6] about choosing a bash profile file.
 3. Install OpenTok3n running `go get github.com/Tok3n/OpenTok3n` and then `go install github.com/Tok3n/OpenTok3n`.
 4. Verify the installation running `OpenTok3n`.
 
@@ -30,7 +30,7 @@ Configuration
 There are three configuration methods:
 
 * Perform an interactive configuration running `OpenTok3n` for the first time.
-* Create an opentok3n.config file and provide the path to the folder where such file is located. `OpenTok3n --path /pathToConfigFolder`. Please note the file should be written in json format.
+* Create an *opentok3n.config* file and provide the path to the folder where such file is located. `OpenTok3n --path /pathToConfigFolder`. Please note the file should be written in json format.
 
 ```json
 {
@@ -40,11 +40,11 @@ There are three configuration methods:
 	"DBAddress": "localhost",
 	"DBPort": "3306",
 	"DBUser": "root",
-	"DBPassword": "root",
-	"DBName": "open",
-	"DBTablePrefix": "open_",
-	"Tok3nAPISecret": "THIS-IS-YOUR-TOK3N-SECRET-KEY",
-	"Tok3nAPIKey": "THIS-IS-YOUR-TOK3N-PUBIC-KEY"
+	"DBPassword": "yourDBpassword",
+	"DBName": "opentok3n",
+	"DBTablePrefix": "myintegration_",
+	"Tok3nAPISecret": "YOUR-TOK3N-SECRET-KEY",
+	"Tok3nAPIKey": "YOUR-TOK3N-PUBIC-KEY"
 }
 ```
 
