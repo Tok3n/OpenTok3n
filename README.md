@@ -1,63 +1,68 @@
 OpenTok3n
 =========
 
-We are an Open Source platform for multi-factor authentication. Based in the Tok3n Platform.
+OpenTok3n is an open source platform for multi-factor authentication based on Tok3n Platform.
 
 Requirements
 -
-* [Go programming language][1]
-* [Git Client app][2]
-* [Mercurial client app][3]
-* A MySQL database
+* [Go programming language][1].
+* [Git][2] and [Mercurial][3] for the `go get` dependencies resolver. See more information [about the version control tools][7].
+* A MySQL server and a new database.
 
-Installing
+Install
 -
-* Once you downloaded the [GoLang][1]. (Ensure that you have configured a $GOPATH)
-* Add $GOPATH/bin to the $PATH
-* Run the following commands.
+1. Verify your Golang installation running `go`.
+2. Create/Select a directory for the OpenTok3n installation and set up the $GOPATH in your bash profile running `echo "export GOPATH=$HOME/SelectedDirectory" >> $HOME/.bashrc` For more information about choosing a GOPATH run `go help gopath`. Also see [this post][6] about choosing a bash profile file.
+3. Install OpenTok3n running `go get github.com/Tok3n/OpenTok3n` and then `go install github.com/Tok3n/OpenTok3n`.
+4. Verify the installation running `OpenTok3n`.
 
-go get github.com/Tok3n/OpenTok3n
+Create a *tok3n.com* account
+-
 
-* That's it the OpenTok3n App is now installed in your machine.
+1. Install [Tok3n][5] on your Android smartphone.
+2. Create an account at [secure.tok3n.com][4]. Scan the barcode with the Tok3n app to authenticate.
+3. Click the "New integration" button and follow the steps.
+4. Retrieve your API Keys.
+
 
 Configuration
 -
+There are three configuration methods:
 
-Fist you need to have an integration with [Tok3n][4]. For you to have the API Keys that are going to syncronize the end user smartphones with your integration. (The tok3n platform provides the high entropy random number generators for the integration user keys)
+* Perform an interactive configuration running `OpenTok3n` for the first time.
+* Create an opentok3n.config file and provide the path to the folder where such file is located. `OpenTok3n --path /pathToConfigFolder`. Please note the file should be written in json format.
 
-To configure OpenTok3n you can do it in three ways:
-
-* Provide a configuration file to the server at run.
-* Provide the parameters via the " - " sintax to the server at run.
-* Runing the server and perform an interactive configuration. 
-
-The configuration file by default is called '_opentok3n.config_' and is a __json__ string encoded that should looks like the following:
 ```json
 {
-	"Inited":true,
-	"Address":"127.0.0.1",
-	"Port":"63568",
-	"DBAddress":"localhost",
-	"DBPort":"3306",
-	"DBUser":"root",
-	"DBPassword":"root",
-	"DBName":"open",
-	"DBTablePrefix":"open_",
-	"Tok3nAPISecret":"THIS-IS-YOUR-TOK3N-SECRET-KEY",
-	"Tok3nAPIKey":"THIS-IS-YOUR-TOK3N-PUBIC-KEY"
+	"Inited": true,
+	"Address": "127.0.0.1",
+	"Port": "63568",
+	"DBAddress": "localhost",
+	"DBPort": "3306",
+	"DBUser": "root",
+	"DBPassword": "root",
+	"DBName": "open",
+	"DBTablePrefix": "open_",
+	"Tok3nAPISecret": "THIS-IS-YOUR-TOK3N-SECRET-KEY",
+	"Tok3nAPIKey": "THIS-IS-YOUR-TOK3N-PUBIC-KEY"
 }
 ```
 
-Where __Address__ and __Port__ are the local address:port (tipically "localhost:63568"), where the local server is running. You can change the port and it will run in that particular port.
+* Provide the configuration parameters using the "--" syntax to the server at run. Learn more running `OpenTok3n --help`.
 
-__DBAddress__, __DBPort__ are the url and port of the MySQL server, also the __DBUser__, __DBPassword__ are de credential of that database server. __DBName__ and __DBTablePrefix__ are the database name and the prefix of the tables that will be created in that database.
+Further considerations
+-
 
-The __Tok3nAPISecret__ and __Tok3nAPIKey__ values are the keys Tok3n provide for the service. And to the end the __Inited__ is a must right now until work a little bit more in the auto file loader.
+The default values for `Address` and `Port` are "localhost:63568".
 
-You can always run _OpenTok3n --help_ to remember this detils
-Now you can run the command  to view the parameters that OpenTok3n acept 
+You should manually set `Inited` as true until we fix the auto file loader.
+
+You can also run `OpenTok3n --help` if you forget the installation arguments.
 
 [1]: http://golang.org/doc/install
 [2]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [3]: http://mercurial.selenic.com/wiki/Download
 [4]: http://secure.tok3n.com
+[5]: https://play.google.com/store/apps/details?id=com.secureyourself.with.tok3n
+[6]: http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
+[7]: https://code.google.com/p/go-wiki/wiki/GoGetTools
